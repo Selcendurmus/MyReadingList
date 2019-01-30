@@ -1,5 +1,3 @@
-using System;
-
 namespace MyReadingList.Models
 {
     public class ErrorViewModel
