@@ -1,0 +1,102 @@
+﻿@model MyReadingList.ViewModels.BookFormViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Add a Book</h2>
+
+
+@using (Html.BeginForm("Create", "Book"))
+
+{
+
+
+
+    <p class="alert alert-info">All fields are <strong>required</strong></p>
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Name)
+
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.Name)
+
+    </div>
+
+  //  <div class="form-group">
+
+      //  @Html.LabelFor(m => m.Level)
+
+       // @Html.DropDownListFor(m => m.Level, new SelectList(Model.Levels, "Id", "Name"), "", new { @class = "form-control" })
+
+       // @Html.ValidationMessageFor(m => m.Level)
+
+    //</div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Pages)
+
+        @Html.TextBoxFor(m => m.Pages, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.Pages)
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Date)
+
+        @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.Date)
+
+    </div>
+
+   // <div class="form-group">
+
+      // @Html.LabelFor(m => m.Reader)
+
+      //  @Html.DropDownListFor(m => m.Reader, new SelectList(Model.Readers, "Id", "Name"), "", new { @class = "form-control" })
+
+       // @Html.ValidationMessageFor(m => m.Reader)
+
+   // </div>
+
+  //  <div class="form-group">
+
+      //  @Html.LabelFor(m => m.Rating)
+
+      //  @Html.DropDownListFor(m => m.Rating, new SelectList(Model.Ratings, "Id", "Name"), "", new { @class = "form-control" })
+
+     //   @Html.ValidationMessageFor(m => m.Rating)
+
+   // </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Comments)
+
+        @Html.TextBoxFor(m => m.Comments, new { @class = "form-control" })
+
+        @Html.ValidationMessageFor(m => m.Comments)
+
+    </div>
+
+
+
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+
+}
+
+
+
+
+

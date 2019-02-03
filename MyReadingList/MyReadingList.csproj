@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <Compile Remove="Migrations\20190201170032_CreateBookTable.cs" />
+    <Compile Remove="Migrations\20190201170032_CreateBookTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Models\" />
-    <Folder Include="Migrations\" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
 </Project>

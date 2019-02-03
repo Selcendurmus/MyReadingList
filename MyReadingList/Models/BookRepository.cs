@@ -1,8 +1,9 @@
-﻿using MyReadingList.Application.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace MyReadingList.Application.Repositories
+namespace MyReadingList.Models
 {
     public class BookRepository
     {
