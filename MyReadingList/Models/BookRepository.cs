@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyReadingList.Models
 {
@@ -47,6 +45,39 @@ namespace MyReadingList.Models
             var existing = _books.First(b => b.Id == id);
 
             _books.Remove(existing);
+        }
+
+        public List<Level> GetLevels()
+        {
+            return new List<Level>
+            {
+                new Level{Id=1,Name="Easy"},
+                new Level{Id=2,Name="Medium"},
+                new Level{Id=3,Name="Difficult"},
+            };
+        }
+
+        public List<Reader> GetReaders()
+        {
+            return new List<Reader>
+            {
+                new Reader{Id=1,Name="Self"},
+                new Reader{Id=2,Name="Parent"},
+                new Reader{Id=3,Name="Teacher"},
+            };
+        }
+
+        public List<Rating> GetRatings()
+        {
+            return new List<Rating
+                >
+            {
+                new Rating{Id=1,Name="Excellent"},
+                new Rating{Id=2,Name="Very Good"},
+                new Rating{Id=3,Name="Good"},
+                new Rating{Id=4,Name="Fair"},
+                new Rating{Id=5,Name="Poor"},
+            };
         }
     }
 }

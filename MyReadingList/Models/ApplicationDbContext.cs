@@ -12,17 +12,9 @@ namespace MyReadingList.Models
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
     {
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Reader> Readers { get; set; }
-        public DbSet<Level> Levels { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
-
-        
         public ApplicationDbContext()
-
         {
         }
-
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 
@@ -30,16 +22,23 @@ namespace MyReadingList.Models
 
         }
 
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Reader> Readers { get; set; }
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
 
+      
 
         public static ApplicationDbContext Create()
-        {
+         {
 
             return new ApplicationDbContext();
 
         }
 
     }
-
 }
+
+
+
