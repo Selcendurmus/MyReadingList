@@ -30,6 +30,7 @@ namespace MyReadingList.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(BookFormViewModel viewModel)
         {
             var reader = _context.Readers.Single(r => r.Id == viewModel.Reader);
