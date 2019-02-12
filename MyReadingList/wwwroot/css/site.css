@@ -35,3 +35,93 @@ body {
         display: none;
     }
 }
+
+
+
+    /*Bootstrap Overrides*/
+
+.navbar-inverse {
+        background-color: coral;
+        border-color: coral;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: lightskyblue;
+}
+
+.navbar-inverse .navbar-brand {
+            color: white;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+            background-color: lightskyblue;
+}
+
+.navbar-inverse .navbar-toggle {
+            border-color: lightskyblue;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+        color: white
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+body {
+    font-size: 17px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1
+.h2,
+.h3,
+.h4,
+.h5,
+.h6{
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    
+    padding: 20px 15px;
+    font-size: 17px;    
+    border-radius: 10px;    
+}
+
+.form-control:focus {
+        border-color: lightskyblue;        
+        box-shadow: none;
+        -webkit-box-shadow: none
+}
+
+
+.btn {    
+    padding: 7px 20px;    
+    font-size: 17px;    
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

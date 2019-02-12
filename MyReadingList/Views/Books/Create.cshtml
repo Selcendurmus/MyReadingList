@@ -2,13 +2,11 @@
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Add a Book</h2>
 
 
 @using (Html.BeginForm("Create", "Books"))
 {
-
     //<p class="alert alert-info">All fields are <strong>required</strong></p>
 
     @Html.AntiForgeryToken()

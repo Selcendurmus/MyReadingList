@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyReadingList</title>
+    <title>@ViewData["Title"] -My Reading List</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,23 +27,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">MyReadingList</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">My Reading List</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">                   
+                <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Add a Book", "Create", "Books")</li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <partial name="_CookieConsentPartial" />\
+    <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - MyReadingList</p>
+            <p>&copy; 2019 - My Reading List</p>
         </footer>
     </div>
 
