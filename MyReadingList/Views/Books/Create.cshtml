@@ -31,7 +31,7 @@
 
         @Html.LabelFor(m => m.Reader)
 
-        @Html.DropDownListFor(m => m.Reader, new SelectList(Model.Readers, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Reader, new SelectList(Model.Readers, "Id", "Name"), "")
 
     </div>
 
@@ -39,7 +39,7 @@
 
         @Html.LabelFor(m => m.Level)
 
-        @Html.DropDownListFor(m => m.Level, new SelectList(Model.Levels, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Level, new SelectList(Model.Levels, "Id", "Name"), "")
 
     </div>
 
@@ -47,7 +47,7 @@
 
         @Html.LabelFor(m => m.Rating)
 
-        @Html.DropDownListFor(m => m.Rating, new SelectList(Model.Ratings, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Rating, new SelectList(Model.Ratings, "Id", "Name"), "")
 
     </div>
 
@@ -55,7 +55,7 @@
 
         @Html.LabelFor(m => m.Date)
 
-        @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", placeholder = "eg 01/01/2019"})
 
     </div>
 

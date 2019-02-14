@@ -1,15 +1,26 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyReadingList.Models;
+using System.Diagnostics;
+using System.Linq;
 
 namespace MyReadingList.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return View();
+            var myBooks = _context.Books.ToList();
+
+            return View(myBooks);
         }
+
+
 
         public IActionResult About()
         {
