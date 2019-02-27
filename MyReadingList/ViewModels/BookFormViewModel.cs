@@ -6,6 +6,9 @@ namespace MyReadingList.ViewModels
 {
     public class BookFormViewModel
     {
+
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Pages { get; set; }
@@ -27,15 +30,24 @@ namespace MyReadingList.ViewModels
         public string Comments { get; set; }
         public object Books { get; internal set; }
 
-        public DateTime DateTime
+        public string Heading { get; set; }
+
+        public string Action
         {
             get
             {
-                return DateTime.Parse(string.Format("{0} {1}", Date, Time));
-            }                
-        }     
+                return (Id!= 0)? "Update" : "Create";
+            }
+        }
+        public DateTime GetDateTime()
+
+        {
+             return DateTime.Parse(string.Format("{0} {1}", Date, Time)); }
+        }
+
+
     }
-}
+
 
 
 

@@ -10,25 +10,36 @@ namespace MyReadingList.Models
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public Level Level { get; set; }
 
         public string Pages { get; set; }
 
+
+        public Level Level { get; set; }
+
+        [Required]
+        public int LevelId { get; set; }
+
+
+        public Reader Reader { get; set; }
+
+        [Required]
+        public int ReaderId { get; set; }
+
+        public Rating Rating { get; set; }
+
+        [Required]
+        public int RatingId { get; set; }
+
         public DateTime DateTime { get; set; }
 
-        [Required]
-        public Reader Reader { get; set; }
-        
-        public string NumberOfReads { get; set; }
-
-        [Required]
-        public  Rating Rating { get; set; }
 
         public string Comments { get; set; }
 
-        public bool IsBookOfTheMonth { get; set; }
 
+        public string NumberOfReads { get; set; }
+
+
+        public bool IsBookOfTheMonth { get; set; }
 
     }
 }

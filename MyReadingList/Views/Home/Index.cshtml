@@ -23,9 +23,35 @@
                 <span class="title">@book.Name</span>
 
             </div>
+            <div>
+                <div class="actions">
 
+
+                    <a href="@Url.Action("Details", "Books", new {id = book.Id})">
+
+                        Details
+
+                    </a> |
+
+                    <a href="@Url.Action("Edit", "Books", new {id = book.Id})">
+
+                        Edit
+
+                    </a> |
+
+                    <a href="@Url.Action("Delete", "Books", new {id = book.Id})">
+
+                        Delete
+
+                    </a>  
+
+                    
+                </div>
+
+            </div>
         </li>
     }
 
 </ul>
+
 
