@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using MyReadingList.Core;
 using MyReadingList.Models;
+using MyReadingList.Persistence;
 using MyReadingList.ViewModels;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace MyReadingList.Controllers
@@ -10,17 +10,14 @@ namespace MyReadingList.Controllers
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly Book book;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public int Id { get; private set; }
-        public List<Level> Levels { get; private set; }
-        public List<Reader> Readers { get; private set; }
-        public List<Rating> Ratings { get; private set; }
 
         public BooksController(ApplicationDbContext context)
 
         {
             _context = context;
+            _unitOfWork = new UnitOfWork(_context);
         }
 
         //GET: Books
@@ -29,9 +26,13 @@ namespace MyReadingList.Controllers
         {
             var viewModel = new BookFormViewModel
             {
-                Levels = _context.Levels.ToList(),
-                Readers = _context.Readers.ToList(),
-                Ratings = _context.Ratings.ToList(),
+                //Levels = _context.Levels.ToList(),
+                Levels = _unitOfWork.Levels.GetLevels(),
+                //Readers = _context.Readers.ToList(),
+                Readers = _unitOfWork.Readers.GetReaders(),
+                //Ratings = _context.Ratings.ToList(),
+                ///Ratings = _ratingRepository.GetRatings(),
+                Ratings = _unitOfWork.Ratings.GetRatings(),
                 Heading = "Add a Book",
             };
 
@@ -53,8 +54,10 @@ namespace MyReadingList.Controllers
                 Comments = viewModel.Comments,
             };
 
-            _context.Books.Add(book);
-            _context.SaveChanges();
+            //_context.Books.Add(book);
+            _unitOfWork.Books.Add(book);
+            //_context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Home");
         }
@@ -64,14 +67,19 @@ namespace MyReadingList.Controllers
 
         public ActionResult Details(int id)
         {
-            var book = _context.Books.Single(b => b.Id == id);
+            //var book = _context.Books.Single(b => b.Id == id);
+            var book = _unitOfWork.Books.GetBook(id);
 
             var viewModel = new BookFormViewModel
             {
                 Heading = "Details of the Book",
-                Levels = _context.Levels.ToList(),
-                Readers = _context.Readers.ToList(),
-                Ratings = _context.Ratings.ToList(),
+                //Levels = _context.Levels.ToList(),
+                Levels = _unitOfWork.Levels.GetLevels(),
+                //Readers = _context.Readers.ToList(),
+                Readers = _unitOfWork.Readers.GetReaders(),
+                //Ratings = _context.Ratings.ToList(),
+                //Ratings = _ratingRepository.GetRatings(),
+                Ratings = _unitOfWork.Ratings.GetRatings(),
                 Date = book.DateTime.ToString("d MMM yyyy"),
                 Name = book.Name,
                 Pages = book.Pages,
@@ -89,15 +97,20 @@ namespace MyReadingList.Controllers
         // GET: Books/Edit
         public ActionResult Edit(int id)
         {
-            var book = _context.Books.Single(b => b.Id == id);
+            //var book = _context.Books.Single(b => b.Id == id);
+            var book = _unitOfWork.Books.GetBook(id);
 
             var viewModel = new BookFormViewModel
             {
                 Heading = "Edit a Book",
                 Id = book.Id,
-                Levels = _context.Levels.ToList(),
-                Readers = _context.Readers.ToList(),
-                Ratings = _context.Ratings.ToList(),
+                //Levels = _context.Levels.ToList(),
+                Levels = _unitOfWork.Levels.GetLevels(),
+                //Readers = _context.Readers.ToList(),
+                Readers = _unitOfWork.Readers.GetReaders(),
+                //Ratings = _context.Ratings.ToList(),
+                //Ratings = _ratingRepository.GetRatings(),
+                Ratings = _unitOfWork.Ratings.GetRatings(),
                 Date = book.DateTime.ToString("d MMM yyyy"),
                 Name = book.Name,
                 Pages = book.Pages,
@@ -120,7 +133,8 @@ namespace MyReadingList.Controllers
                 viewModel.Books = _context.Books.ToList();
                 return View("BookForm", viewModel);
             }
-            var book = _context.Books.Single(b => b.Id == viewModel.Id);
+            // var book = _context.Books.Single(b => b.Id == viewModel.Id);
+            var book = _unitOfWork.Books.GetBook(viewModel.Id);
             {
                 book.Name = viewModel.Name;
                 book.Pages = viewModel.Pages;
@@ -132,7 +146,8 @@ namespace MyReadingList.Controllers
             };
 
 
-            _context.SaveChanges();
+            // _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Home");
         }
@@ -141,15 +156,20 @@ namespace MyReadingList.Controllers
         //Get: Books/Delete
         public ActionResult Delete(int id)
         {
-            var book = _context.Books.Single(b => b.Id == id);
+            //var book = _context.Books.Single(b => b.Id == id);
+            var book = _unitOfWork.Books.GetBook(id);
 
             var viewModel = new BookFormViewModel
             {
                 Heading = "Delete the Book",
                 Id = book.Id,
-                Levels = _context.Levels.ToList(),
-                Readers = _context.Readers.ToList(),
-                Ratings = _context.Ratings.ToList(),
+                //Levels = _context.Levels.ToList(),
+                Levels = _unitOfWork.Levels.GetLevels(),
+                //Readers = _context.Readers.ToList(),
+                Readers = _unitOfWork.Readers.GetReaders(),
+                //Ratings = _context.Ratings.ToList(),
+                //Ratings = _ratingRepository.GetRatings(),
+                Ratings = _unitOfWork.Ratings.GetRatings(),
                 Date = book.DateTime.ToString("d MMM yyyy"),
                 Name = book.Name,
                 Pages = book.Pages,
@@ -174,7 +194,8 @@ namespace MyReadingList.Controllers
                 viewModel.Books = _context.Books.ToList();
                 return View("BookForm", viewModel);
             }
-            var book = _context.Books.Single(b => b.Id == viewModel.Id);
+            //var book = _context.Books.Single(b => b.Id == viewModel.Id);
+            var book = _unitOfWork.Books.GetBook(viewModel.Id);
             {
                 book.Name = viewModel.Name;
                 book.Pages = viewModel.Pages;
@@ -185,8 +206,10 @@ namespace MyReadingList.Controllers
                 book.Comments = viewModel.Comments;
             };
 
-            _context.Books.Remove(book);
-            _context.SaveChanges();
+            //_context.Books.Remove(book);
+            _unitOfWork.Books.Remove(book);
+            // _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return RedirectToAction("Index", "Home");
         }

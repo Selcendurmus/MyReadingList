@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
+using MyReadingList.Core;
 using MyReadingList.Models;
+using MyReadingList.Persistence;
 using MyReadingList.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,7 @@ namespace MyReadingList.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
         public List<Level> Levels { get; private set; }
         public List<Reader> Readers { get; private set; }
@@ -20,11 +23,13 @@ namespace MyReadingList.Controllers
         public HomeController(ApplicationDbContext context)
         {
             _context = context;
+            _unitOfWork = new UnitOfWork(_context);
         }
         public IActionResult Index()
         {
-            var myBooks = _context.Books.ToList();
-
+            //var myBooks = _context.Books.ToList();
+            var myBooks = _unitOfWork.Books.GetBooks();
+            
             return View(myBooks);
         }
                
