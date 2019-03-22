@@ -39,9 +39,11 @@ namespace MyReadingList.Controllers
             return View("BookForm", viewModel);
         }
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BookFormViewModel viewModel)
+        public RedirectToActionResult Create(BookFormViewModel viewModel)
         {
             var book = new Book
             {
@@ -50,7 +52,7 @@ namespace MyReadingList.Controllers
                 ReaderId = viewModel.Reader,
                 LevelId = viewModel.Level,
                 RatingId = viewModel.Rating,
-                DateTime = viewModel.GetDateTime(),
+                DateTime = Clock.Now(),// viewModel.GetDateTime(),
                 Comments = viewModel.Comments,
             };
 
@@ -65,7 +67,7 @@ namespace MyReadingList.Controllers
 
         // GET: Books/Details                
 
-        public ActionResult Details(int id)
+        public ViewResult Details(int id)
         {
             //var book = _context.Books.Single(b => b.Id == id);
             var book = _unitOfWork.Books.GetBook(id);
@@ -94,8 +96,10 @@ namespace MyReadingList.Controllers
         }
 
 
+
+
         // GET: Books/Edit
-        public ActionResult Edit(int id)
+        public ViewResult Edit(int id)
         {
             //var book = _context.Books.Single(b => b.Id == id);
             var book = _unitOfWork.Books.GetBook(id);
@@ -159,6 +163,7 @@ namespace MyReadingList.Controllers
             //var book = _context.Books.Single(b => b.Id == id);
             var book = _unitOfWork.Books.GetBook(id);
 
+
             var viewModel = new BookFormViewModel
             {
                 Heading = "Delete the Book",
@@ -180,7 +185,6 @@ namespace MyReadingList.Controllers
             };
 
             return View(viewModel);
-
         }
 
         // POST: Books/Delete

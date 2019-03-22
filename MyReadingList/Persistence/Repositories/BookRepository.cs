@@ -17,7 +17,7 @@ namespace MyReadingList.Repositories
 
         public Book GetBook(int bookId)
         {
-            return _context.Books.Single(b => b.Id == bookId);
+            return _context.Books.SingleOrDefault(b => b.Id == bookId);
 
         }
         public IEnumerable<Book> GetBooks()

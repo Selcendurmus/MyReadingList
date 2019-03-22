@@ -1,13 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
 using MyReadingList.Core;
 using MyReadingList.Models;
 using MyReadingList.Persistence;
-using MyReadingList.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace MyReadingList.Controllers
 {
@@ -25,15 +21,15 @@ namespace MyReadingList.Controllers
             _context = context;
             _unitOfWork = new UnitOfWork(_context);
         }
-        public IActionResult Index()
+        public ViewResult Index()
         {
             //var myBooks = _context.Books.ToList();
             var myBooks = _unitOfWork.Books.GetBooks();
-            
+
             return View(myBooks);
         }
-               
-               
+
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
