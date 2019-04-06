@@ -50,41 +50,41 @@ namespace MyReadingListTest.ControllerTests
             
         }
 
-        [Fact]
-        public void Details_WhenCalled_ShouldDisplayTheDetailsOfTheBook()
-        {
-            // Given
+        //[Fact]
+        //public void Details_WhenCalled_ShouldDisplayTheDetailsOfTheBook()
+        //{
+        //    // Given
 
-            var context = GetDbContext();
+        //    var context = GetDbContext();
 
-            var viewModel = new BookFormViewModel
-            {
-                Heading = "Details of the Book",
-                Id = 2,
-                Name = "My Test Book",
-                Pages = "15",
-                Reader = 1,
-                Level = 2,
-                Rating = 3,
-                Comments = "nice book"
+        //    var viewModel = new BookFormViewModel
+        //    {
+        //        Heading = "Details of the Book",
+        //        Id = 2,
+        //        Name = "My Test Book",
+        //        Pages = "15",
+        //        Reader = 1,
+        //        Level = 2,
+        //        Rating = 3,
+        //        Comments = "nice book"
 
-            };
+        //    };
 
-            var controller = new BooksController(context);
+        //    var controller = new BooksController(context);
 
-            // When
-            var result = controller.Create(viewModel);
+        //    // When
+        //    var result = controller.Create(viewModel);
 
-            // Assert
-            Assert.Equal("Details of the Book", viewModel.Heading);
-            Assert.Equal(2, viewModel.Id);
-            Assert.Equal("My Test Book", viewModel.Name);
-            Assert.Equal("15", viewModel.Pages);
-            Assert.Equal(1, viewModel.Reader);
-            Assert.Equal(2, viewModel.Level);
-            Assert.Equal(3, viewModel.Rating);
-            Assert.Equal("nice book", viewModel.Comments);
-        }
+        //    // Assert
+        //    Assert.Equal("Details of the Book", viewModel.Heading);
+        //    Assert.Equal(2, viewModel.Id);
+        //    Assert.Equal("My Test Book", viewModel.Name);
+        //    Assert.Equal("15", viewModel.Pages);
+        //    Assert.Equal(1, viewModel.Reader);
+        //    Assert.Equal(2, viewModel.Level);
+        //    Assert.Equal(3, viewModel.Rating);
+        //    Assert.Equal("nice book", viewModel.Comments);
+        //}
 
 
         [Fact]
